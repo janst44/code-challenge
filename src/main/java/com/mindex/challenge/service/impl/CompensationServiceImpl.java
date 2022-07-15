@@ -35,6 +35,11 @@ public class CompensationServiceImpl implements CompensationService {
         if (employee == null) { // fail to create compensation if employee doesn't exist
             throw new HttpClientErrorException(HttpStatus.BAD_REQUEST, "Invalid employeeId: " + id);
         }
+        Compensation existingCompensation = compensationRepository.findByEmployeeId(id);
+        if(existingCompensation != null) {
+            LOG.info("Compensation already set for employee id [{}]", id);
+            return compensation; // This case is not explained but seems to be the best option since only 2 endpoints are needed supposedly (GET and POST).
+        }
         String effectiveDate = new Timestamp(System.currentTimeMillis()).toString();
         compensation.setEffectiveDate(effectiveDate);
         compensationRepository.insert(compensation);
