@@ -1,0 +1,35 @@
+GET http://localhost:8080/report/16a596ae-edd3-4847-99fe-c4518e82c86f
+
+###
+
+GET http://localhost:8080/report/16a596ae-edd3-4847-99fe-c4518e82c86f
+
+###
+
+POST http://localhost:8080/employee
+Content-Type: application/json
+
+{
+  "employeeId" : "123",
+  "firstName" : "John",
+  "lastName" : "Cena",
+  "position" : "Wrestler",
+  "department" : "UFC"
+}
+
+###
+
+POST http://localhost:8080/compensation
+Content-Type: application/json
+
+{
+  "employeeId" : "16a596ae-edd3-4847-99fe-c4518e82c86f",
+  "salary" : "2000"
+}
+
+###
+
+GET http://localhost:8080/compensation/16a596ae-edd3-4847-99fe-c4518e82c86f
+Content-Type: application/json
+
+
